@@ -1,5 +1,5 @@
 what i noticed in older version like: 
-    Flag 0x01 (v127+): AES-256-GCM hardcoded key in elevation_service.exe
+    Flag 0x01 (v127+): AES-256-GCM a hardcoded key in elevation_service.exe
     Flag 0x02 (v133+): ChaCha20-Poly130 hardcoded key in elevation_service.exe
     Flag 0x03 (v137+): AES-256-GCM with CNG-encrypted key from DPAPI blob decrypted via Microsoft's Key Storage Provider, then XORed with a hardcoded key
 
