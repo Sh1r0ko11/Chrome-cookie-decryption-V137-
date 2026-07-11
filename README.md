@@ -25,3 +25,5 @@ The original code hardcoded full[0] != 1 it only handled flag 0x01 Chrome 137+ u
 
 The flag 0x03 path is the trickiest: after double DPAPI, the blob contains a 32-byte AES key that's encrypted with CNG. 
 You need to call NCryptDecrypt using the "Google Chromekey1" persistent key that Chrome installs in the Windows Key Storage Provider then XOR the result with a hardcoded key from elevation_service.exe
+
+and no this code WASNT vibecodet or amde by fucking Ai, fuck ai everything by me is selfmade, self-codet self writen, and yes the code fully by me, i always provide helpfull code, good explained because i want you to understand my code not to only copy and ,,TRY,, to understand it, i WANT you to
