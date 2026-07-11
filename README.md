@@ -6,7 +6,7 @@ what i noticed in older version like:
 The blob also has a proper length-prefixed structure not just raw bytes at the end like used in python codes from "https://gist.github.com/thewh1teagle/d0bbc6bc678812e39cba74e1d407e5c7#file-main-py" who was updated 2 years ago and exactly made for the "v20" encryption system or whatever you wanna call it.
 
 # The Problem
-The original code hardcoded full[0] != 1 — it only handled flag 0x01 Chrome 137+ uses flag 0x03 which has a completely different key derivation path.
+The original code hardcoded full[0] != 1 it only handled flag 0x01 Chrome 137+ uses flag 0x03 which has a completely different key derivation path.
 
 | Original Code                                | Fixed Code                                                                                                                        |
 | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
