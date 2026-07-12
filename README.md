@@ -43,3 +43,9 @@ and no this code WASNT vibecodet or amde by fucking Ai, fuck ai everything by me
 Right now: Works on Chrome 127+ including the latest stable builds that use flag 0x03.
 6 months from now? Maybe, depends on whether Google ships a flag 0x04 or rotates keys.
 Long term: This is a cat-and-mouse game the script is a snapshot of the current state of Chrome's app_bound encryption, not a permanent bypass.
+
+# Often asked question:
+Why Python and not C++ or Rust? Simple I wanted this to be usable, not just fast.
+Sure, I could ve built some slick memory scanner, injected a DLL, attached a debugger, or played games with Chrome's debug ports like the old tools did. But then youre stuck compiling for x64, fighting Windows Defender every time you breathe on ReadProcessMemory, and rewriting struct offsets every Tuesday when Google pushes a new build. That's not hacking thats maintenance hell.
+Python lets you just pip install and run. No binaries, no architecture matching, no "why does Chrome crash when I look at it funny?" We leave Chrome completely alone and just ask Windows nicely to decrypt its own stuff through DPAPI and CNG. The codes messier, the scripts slower, but it works and it keeps working.
+Sometimes the best tool is the one that doesnt make you want to throw your laptop out the window, asap
