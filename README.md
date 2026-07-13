@@ -1,4 +1,4 @@
-# Code released!
+# Code released! (tested on 7/13/2026 and fully working latest chrome version)
 
 what i noticed in older version like: 
     Flag 0x01 (v127+): AES-256-GCM a hardcoded key in elevation_service.exe
