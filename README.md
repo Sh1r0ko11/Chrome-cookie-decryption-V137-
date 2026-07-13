@@ -73,6 +73,8 @@ Right now: Works on Chrome 127+ including the latest stable builds that use flag
 6 months from now? Maybe, depends on whether Google ships a flag 0x04 or rotates keys.
 Long term: This is a cat-and-mouse game the script is a snapshot of the current state of Chrome's app_bound encryption, not a permanent bypass.
 
+For chrome_exe.py you **NEED** EVERYTHING THATS inside the .zip, also the PsExec.exe, just dont move anything) for the normal chrome.py you DONT NEED ANYTHING expect the .py script itself
+
 # Simpel:
 
 the normal chrome.py works on SOME system (no windows 10/11 Home systems)
