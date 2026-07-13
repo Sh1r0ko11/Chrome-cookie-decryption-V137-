@@ -73,6 +73,14 @@ Right now: Works on Chrome 127+ including the latest stable builds that use flag
 6 months from now? Maybe, depends on whether Google ships a flag 0x04 or rotates keys.
 Long term: This is a cat-and-mouse game the script is a snapshot of the current state of Chrome's app_bound encryption, not a permanent bypass.
 
+# Simpel:
+
+the normal chrome.py works on SOME system (no windows 10/11 Home systems)
+chrome_exe.py works on EVERY device, and can be compiled into a .exe (for test) the the normal chrome.py **CANT** do that
+both scripts save the cookies in the same path as the executed script
+the normal chrome.py **DOESNT** save the cookies in a .json format, the chrome_exe.py saves the extracted cookies **IN** .json format
+
+
 # Often asked question:
 Why Python and not C++ or Rust? Simple I wanted this to be usable, not just fast.
 
