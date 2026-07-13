@@ -1,4 +1,4 @@
-#Code released!
+# Code released!
 
 what i noticed in older version like: 
     Flag 0x01 (v127+): AES-256-GCM a hardcoded key in elevation_service.exe
