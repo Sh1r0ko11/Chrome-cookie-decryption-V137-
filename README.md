@@ -38,6 +38,35 @@ You need to call NCryptDecrypt using the "Google Chromekey1" persistent key that
 
 and no this code WASNT vibecodet or amde by fucking Ai, fuck ai everything by me is selfmade, self-codet self writen, and yes the code fully by me, i always provide helpfull code, good explained because i want you to understand my code not to only copy and ,,TRY,, to understand it, i WANT you to
 
+
+# chrome_exe.py
+
+Why I Rewrote This From Scratch for .exe
+The original script is solid. It decrypts Chrome v20 cookies with app-bound protection and covers all three flags. But I rebuilt the entire SYSTEM escalation layer from scratch because the original only works as a raw .py file.
+Try compiling it with PyInstaller and everything explodes. pypsexec needs SMB. win32crypt needs pywin32. Good luck explaining pip install to someone who just wants to run a tool.
+
+So I rewrote everything. One .exe. One PsExec.exe next to it. Zero Python installs. Zero headaches(pyinstaller). Because if you're shipping a tool like this you want it to just run.
+Google called this "app-bound encryption" like they invented something new. It's just DPAPI in a trenchcoat. Two layers of the same Windows API they already had. The keys are still hardcoded in elevation_service.exe. 
+The CNG key still lives in the Microsoft Software Key Storage Provider where SYSTEM can grab it. It's security theater with a bigger marketing budget. The "app-bound" part just means they made you click twice instead of once.
+
+**What Changed (Complete Rewrite)**
+|                   | **Original**                          | **My Rewrite**                               |
+| ----------------- | ------------------------------------- | -------------------------------------------- |
+| SYSTEM escalation | `pypsexec` over SMB                   | `PsExec.exe` native (rewritten from scratch) |
+| Dependencies      | `pypsexec`, `pywin32`, `pycryptodome` | `pycryptodome` only                          |
+| Helper delivery   | Temp `.py` via SMB pipe               | `.exe` calls **itself** with CLI flags       |
+| Data to SYSTEM    | Base64 stdout                         | Binary files in `C:\Windows\Temp`            |
+| Errors            | Swallowed by pipe buffer              | Full `traceback` to `.err` files             |
+| Chrome path       | Hardcoded `%USERPROFILE%`             | Registry scan + multi-user fallback          |
+| Frozen `.exe`?    | No                                    | Yes – built explicitly for this              |
+| Webhook           | Hardcoded Discord URL                 | Removed – local JSON only                    |
+
+The Technical Rewrite
+I threw out the entire pypsexec architecture and built a "self-invocation system" tqhe main binary detects --system-dpapi and --system-cng flags in sys.argv. When PsExec launches it as SYSTEM with those flags it runs the decryption natively and writes the result to a file. No external scripts. No pipe buffers. No SMB. No Python interpreter needed.
+The payload gets written to disk because passing 640 bytes of Base64 through a CLI argument makes Windows throw The parameter is incorrect. Files don't have that problem.
+Google's "unbreakable" app-bound protection breaks in about 30 seconds with a Microsoft-signed tool. That's not a security model. That's just sad.
+
+
 # Usage
 
 Right now: Works on Chrome 127+ including the latest stable builds that use flag 0x03.
@@ -51,3 +80,6 @@ Sure, I could ve built some slick memory scanner, injected a DLL, attached a deb
 
 Python lets you just pip install and run. No binaries, no architecture matching, no "why does Chrome crash when I look at it funny?" We leave Chrome completely alone and just ask Windows nicely to decrypt its own stuff through DPAPI and CNG. The codes messier, the scripts slower, but it works and it keeps working.
 Sometimes the best tool is the one that doesnt make you want to throw your laptop out the window, asap
+
+
+
