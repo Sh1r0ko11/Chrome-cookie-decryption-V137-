@@ -17,7 +17,7 @@ The original code hardcoded full[0] != 1 it only handled flag 0x01 Chrome 137+ u
 | Single hardcoded AES key                     | Three keys: AES key, ChaCha20 key, and XOR key for CNG path                                                                       |
 | No CNG support                               | Added `decrypt_with_cng_via_psexec()` using `NCryptDecrypt` with "Google Chromekey1" from Microsoft Software Key Storage Provider |
 
-# Chrome Version → Flag Mapping
+# Chrome Version -> Flag Mapping
 
 | Chrome Version | Flag   | Algorithm         | Key Source                             |
 | -------------- | ------ | ----------------- | -------------------------------------- |
